@@ -7,6 +7,5 @@
 }
 
 body {
-  background-color: #17181A;
-  color: #ffffff;
+  @apply text-white bg-gradient-to-br from-slate-900 via-gray-900 to-black;
 }
