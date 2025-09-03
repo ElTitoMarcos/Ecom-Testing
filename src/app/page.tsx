@@ -39,6 +39,15 @@ export default async function Page() {
           </div>
         </div>
       </div>
+      <div className="mt-6 rounded-2xl border border-teal-500/40 bg-slate-800/40 p-4 shadow-soft">
+        <label className="flex items-center gap-2 text-sm text-teal-300">
+          <input type="checkbox" className="accent-teal-500 rounded" />
+          Activar modo consejos
+        </label>
+        <button className="mt-4 w-full rounded-lg bg-teal-600 px-4 py-2 text-sm font-medium text-white hover:bg-teal-500">
+          🚀 Explorar productos
+        </button>
+      </div>
 
       <h2 className="mt-8 mb-2 flex items-center gap-2 font-semibold text-teal-400">
         🌟 Últimos añadidos
