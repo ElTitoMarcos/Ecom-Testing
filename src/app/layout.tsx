@@ -9,19 +9,27 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
-      <body className="min-h-screen">
+      <body className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-black text-white">
         <div className="mx-auto max-w-6xl px-6 py-6">
           <nav className="flex items-center justify-between mb-6">
-            <div className="text-xl font-semibold">🧭 Trend Forge</div>
+            <div className="flex items-center gap-2 text-2xl font-bold text-teal-400">
+              🧭 Trend Forge
+            </div>
             <div className="flex gap-4 text-sm">
-              <Link href="/">Dashboard</Link>
-              <Link href="/products">Productos</Link>
-              <Link href="/sources">Importar</Link>
+              <Link className="flex items-center gap-1 hover:text-teal-300" href="/">
+                <span>🏠</span> Dashboard
+              </Link>
+              <Link className="flex items-center gap-1 hover:text-teal-300" href="/products">
+                <span>📦</span> Productos
+              </Link>
+              <Link className="flex items-center gap-1 hover:text-teal-300" href="/sources">
+                <span>📥</span> Importar
+              </Link>
             </div>
           </nav>
           {children}
-          <footer className="mt-10 text-xs text-gray-400">
-            Hecho con Next.js + Prisma · Diseño sobrio y útil · © {new Date().getFullYear()}
+          <footer className="mt-10 text-xs text-gray-400 text-center">
+            Hecho con Next.js + Prisma · Diseño colorido y útil · © {new Date().getFullYear()}
           </footer>
         </div>
       </body>
