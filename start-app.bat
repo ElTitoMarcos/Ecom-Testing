@@ -13,6 +13,7 @@ if %errorlevel% neq 0 exit /b %errorlevel%
 call pnpm build
 if %errorlevel% neq 0 exit /b %errorlevel%
 
-start "" cmd /c "pnpm start"
+start "" cmd /k "cd /d ^"%~dp0^" && pnpm start"
+
 timeout /t 5 /nobreak >nul
 start "" http://localhost:3000
