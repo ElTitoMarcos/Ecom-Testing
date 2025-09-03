@@ -2,8 +2,15 @@ import { prisma } from "@/lib/db"
 import Link from "next/link"
 
 export default async function Page() {
-  const count = await prisma.product.count()
-  const latest = await prisma.product.findMany({ orderBy: { createdAt: 'desc' }, take: 5 })
+  let count = 0
+  let latest: { id: string; title: string; platform: string | null; source: string | null }[] = []
+
+  try {
+    count = await prisma.product.count()
+    latest = await prisma.product.findMany({ orderBy: { createdAt: 'desc' }, take: 5 })
+  } catch (err) {
+    console.error('Fallo al acceder a la base de datos', err)
+  }
 
   return (
     <main>
