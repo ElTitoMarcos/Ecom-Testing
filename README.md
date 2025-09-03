@@ -32,6 +32,8 @@ App web (Next.js + Prisma + Tailwind) para **unificar señales** de múltiples h
    ```
    Abre http://localhost:3000
 
+> Este proyecto usa la configuración PostCSS por defecto de Next.js con Tailwind CSS, por lo que no se requiere un fichero `postcss.config` separado.
+
 5. **Producción rápida**
    ```bash
    ./start-app.sh   # Linux/macOS
