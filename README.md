@@ -34,7 +34,8 @@ App web (Next.js + Prisma + Tailwind) para **unificar señales** de múltiples h
 
 5. **Producción rápida**
    ```bash
-   ./start-app.sh
+   ./start-app.sh   # Linux/macOS
+   start-app.bat    # Windows
    ```
    Construye y lanza el servidor en modo producción.
 
