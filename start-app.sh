@@ -1,2 +1,3 @@
 #!/usr/bin/env sh
-pnpm build && pnpm start
+[ -f .env ] || cp .env.example .env
+pnpm db:push && pnpm db:seed && pnpm build && pnpm start
