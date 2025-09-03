@@ -18,7 +18,7 @@ model Product {
   adUrl        String?
   supplierUrl  String?
   metricsJson  Json?
-  images       String[]
+  images       Json?
   notes        String?
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
@@ -32,9 +32,9 @@ model Analysis {
   sophistication     Int?
   massDesire         String?
   usp                String?
-  angles             String[]
-  objections         String[]
-  riskReversals      String[]
+  angles             Json?
+  objections         Json?
+  riskReversals      Json?
   score              Int?
   rationale          String?
   raw                Json?
