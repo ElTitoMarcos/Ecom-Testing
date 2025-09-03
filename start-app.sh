@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-pnpm build && pnpm start
+pnpm db:push && pnpm db:seed && pnpm build && pnpm start
