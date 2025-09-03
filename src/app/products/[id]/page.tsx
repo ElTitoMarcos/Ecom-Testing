@@ -12,7 +12,12 @@ function Field({ label, children }: any) {
 
 export default async function ProductDetail({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
-  const product = await prisma.product.findUnique({ where: { id }, include: { analysis: true } })
+  let product: any = null
+  try {
+    product = await prisma.product.findUnique({ where: { id }, include: { analysis: true } })
+  } catch (err) {
+    console.error('Fallo al acceder a la base de datos', err)
+  }
   if (!product) return <div>Producto no encontrado.</div>
   const productId = product.id
 

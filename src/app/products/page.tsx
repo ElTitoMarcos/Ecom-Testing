@@ -3,10 +3,15 @@ import Link from "next/link"
 import ScoreBadge from "@/components/ScoreBadge"
 
 export default async function Products() {
-  const products = await prisma.product.findMany({
-    orderBy: { createdAt: 'desc' },
-    include: { analysis: true }
-  })
+  let products: { id: string; title: string; platform: string | null; source: string | null; analysis: any }[] = []
+  try {
+    products = await prisma.product.findMany({
+      orderBy: { createdAt: 'desc' },
+      include: { analysis: true }
+    })
+  } catch (err) {
+    console.error('Fallo al acceder a la base de datos', err)
+  }
 
   return (
     <main>
