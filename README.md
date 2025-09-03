@@ -38,6 +38,7 @@ App web (Next.js + Prisma + Tailwind) para **unificar señales** de múltiples h
    start-app.bat    # Windows
    ```
    Construye y lanza el servidor en modo producción.
+   En Windows, el script mantiene la ventana abierta para mostrar errores si los hubiera.
 
 ## Estructura
 - `src/app` — rutas (app router). `/` dashboard, `/sources` importador, `/products` lista.
