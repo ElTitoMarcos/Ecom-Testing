@@ -1,11 +1,18 @@
 @echo off
 cd /d "%~dp0"
 
-rem ensure database is ready
-call pnpm db:push
-call pnpm db:seed
+if not exist .env (
+  echo Creating .env from example...
+  copy .env.example .env >nul
+)
 
-rem start server in new window and open browser automatically
-start "" cmd /c "pnpm build && pnpm start"
+call pnpm db:push
+if %errorlevel% neq 0 exit /b %errorlevel%
+call pnpm db:seed
+if %errorlevel% neq 0 exit /b %errorlevel%
+call pnpm build
+if %errorlevel% neq 0 exit /b %errorlevel%
+
+start "" cmd /c "pnpm start"
 timeout /t 5 /nobreak >nul
 start "" http://localhost:3000
