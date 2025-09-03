@@ -32,6 +32,12 @@ App web (Next.js + Prisma + Tailwind) para **unificar señales** de múltiples h
    ```
    Abre http://localhost:3000
 
+5. **Producción rápida**
+   ```bash
+   ./start-app.sh
+   ```
+   Construye y lanza el servidor en modo producción.
+
 ## Estructura
 - `src/app` — rutas (app router). `/` dashboard, `/sources` importador, `/products` lista.
 - `src/lib` — prisma, openai, scoring.
