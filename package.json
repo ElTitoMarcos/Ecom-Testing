@@ -21,7 +21,8 @@
     "react": "latest",
     "react-dom": "latest",
     "tailwindcss": "latest",
-    "zod": "latest"
+    "zod": "latest",
+    "@tailwindcss/postcss": "latest"
   },
   "devDependencies": {
     "@types/node": "latest",
@@ -29,7 +30,6 @@
     "@types/react-dom": "latest",
     "eslint": "latest",
     "eslint-config-next": "latest",
-    "@tailwindcss/postcss": "latest",
     "@types/papaparse": "latest",
     "prisma": "latest",
     "tsx": "latest",
