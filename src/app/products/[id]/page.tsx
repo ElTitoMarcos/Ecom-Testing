@@ -10,16 +10,18 @@ function Field({ label, children }: any) {
   )
 }
 
-export default async function ProductDetail({ params }: { params: { id: string } }) {
-  const product = await prisma.product.findUnique({ where: { id: params.id }, include: { analysis: true } })
+export default async function ProductDetail({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
+  const product = await prisma.product.findUnique({ where: { id }, include: { analysis: true } })
   if (!product) return <div>Producto no encontrado.</div>
+  const productId = product.id
 
   async function analyze() {
     "use server"
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL ?? ''}/api/openai`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ productId: product.id })
+      body: JSON.stringify({ productId })
     })
     if (!res.ok) throw new Error('Error al analizar')
   }
@@ -63,9 +65,9 @@ export default async function ProductDetail({ params }: { params: { id: string }
                 <div><b>Sofisticación:</b> {product.analysis.sophistication ?? '—'}</div>
                 <div><b>Deseo:</b> {product.analysis.massDesire ?? '—'}</div>
                 <div><b>USP:</b> {product.analysis.usp ?? '—'}</div>
-                <div><b>Ángulos:</b> {product.analysis.angles?.join(' · ') ?? '—'}</div>
-                <div><b>Objeciones:</b> {product.analysis.objections?.join(' · ') ?? '—'}</div>
-                <div><b>Riesgo Reverso:</b> {product.analysis.riskReversals?.join(' · ') ?? '—'}</div>
+                <div><b>Ángulos:</b> {Array.isArray(product.analysis.angles) ? (product.analysis.angles as string[]).join(' · ') : '—'}</div>
+                <div><b>Objeciones:</b> {Array.isArray(product.analysis.objections) ? (product.analysis.objections as string[]).join(' · ') : '—'}</div>
+                <div><b>Riesgo Reverso:</b> {Array.isArray(product.analysis.riskReversals) ? (product.analysis.riskReversals as string[]).join(' · ') : '—'}</div>
               </div>
             )}
           </div>
